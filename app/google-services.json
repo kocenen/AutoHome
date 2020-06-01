@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1017591554869",
+    "firebase_url": "https://auto-45d84.firebaseio.com",
+    "project_id": "auto-45d84",
+    "storage_bucket": "auto-45d84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017591554869:android:f45b80ad863ff555d8e27c",
+        "android_client_info": {
+          "package_name": "com.AutoHome.homework"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1017591554869-d0of7fciqscm397lvfjithmt2ops9vuo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.AutoHome.homework",
+            "certificate_hash": "1e617d06dd4a79458c3b29734101ae4cd4cb38df"
+          }
+        },
+        {
+          "client_id": "1017591554869-rua4ifiaped0b1aa0ph3paof873ibpgh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBImE4oXCcAHg6tSoxL2ZsrlpPyHNFe3PM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1017591554869-rua4ifiaped0b1aa0ph3paof873ibpgh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
