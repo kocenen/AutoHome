@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activity.MainActivity">
 
     <EditText
         android:id="@+id/tb_sendval"
@@ -25,10 +25,10 @@
         android:text="SEND"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.909"
         app:layout_constraintStart_toEndOf="@+id/tb_sendval"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.442" />
+        app:layout_constraintVertical_bias="0.502" />
 
     <TextView
         android:id="@+id/txt_changedData"
@@ -73,4 +73,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_changedData" />
+
+    <Button
+        android:id="@+id/btn_loadWeather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="날씨가 궁금하신가요?"
+        app:layout_constraintBottom_toTopOf="@+id/tb_sendval"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

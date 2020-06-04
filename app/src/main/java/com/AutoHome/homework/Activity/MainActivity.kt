@@ -1,10 +1,9 @@
-package com.AutoHome.homework
+package com.AutoHome.homework.Activity
 
 
-import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -13,16 +12,22 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.QuickContactBadge
-import androidx.core.app.NotificationBuilderWithBuilderAccessor
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
+import com.AutoHome.homework.Client.Client
+import com.AutoHome.homework.R
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_main.*
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
@@ -63,16 +68,50 @@ class MainActivity : AppCompatActivity() {
             showNoti(tb_notiTitle.text.toString(),tb_notiBody.text.toString())
         }
 
+        val btn_Weather = findViewById<Button>(R.id.btn_loadWeather) as Button
+        btn_Weather.setOnClickListener {
+            getCurrentWeather()
+        }
 
     }
 
+    fun getCurrentWeather() : String? {
+        var res: retrofit2.Call<JsonObject> = Client
+            .getInstance()
+            .buildRetrofit()
+            .getCurrentWeather("37.226713","127.201722", "5973b1320d3b5b0ebea69c825b7d2999")
+
+        var jsonObject: String
+        Log.d(ContentValues.TAG, "LOGD: Test SUCSEX")
+        res.enqueue(object : Callback<JsonObject> {
+            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                Log.d(ContentValues.TAG, "Fail")
+            }
+
+            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                var jsonObj = JSONObject(response.body().toString())
+                Log.d(ContentValues.TAG, "LOGD2:" + jsonObj.toString())
+                jsonObject = jsonObj.toString()
+            }
+
+        })
+        Log.d(ContentValues.TAG, "LOGD: Test SUCSEX2")
+        return null;
+    }
+
+    fun loadWeather()
+    {
+        val intent = Intent()
+    }
     fun showNoti(title:String, body:String)
     {
         var not = getNotificationBuilder("channel1", "1st Channel")
         not.setTicker("Ticker")
         not.setSmallIcon(android.R.drawable.ic_menu_search)
 
-        var bitmap = BitmapFactory.decodeResource(resources,R.mipmap.ic_launcher)
+        var bitmap = BitmapFactory.decodeResource(resources,
+            R.mipmap.ic_launcher
+        )
         not.setLargeIcon(bitmap)
         not.setNumber(100)
         not.setAutoCancel(true)
@@ -84,6 +123,7 @@ class MainActivity : AppCompatActivity() {
         mng.notify(10,notification)
 
     }
+
 
     fun getNotificationBuilder(id:String,name:String) : NotificationCompat.Builder{
         var not : NotificationCompat.Builder? = null

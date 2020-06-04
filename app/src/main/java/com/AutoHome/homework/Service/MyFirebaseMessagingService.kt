@@ -1,4 +1,4 @@
-package com.AutoHome.homework
+package com.AutoHome.homework.Service
 
 import android.annotation.SuppressLint
 import android.app.NotificationManager
@@ -6,10 +6,9 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
-import android.util.Log
 import androidx.core.app.NotificationCompat
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.iid.FirebaseInstanceId
+import com.AutoHome.homework.Activity.MainActivity
+import com.AutoHome.homework.R
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
