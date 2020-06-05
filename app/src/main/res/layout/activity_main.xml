@@ -95,4 +95,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_loadWeather" />
+
+    <Button
+        android:id="@+id/btn_MoveToRealm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Realm이동"
+        app:layout_constraintBottom_toTopOf="@+id/btn_loadWeather"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

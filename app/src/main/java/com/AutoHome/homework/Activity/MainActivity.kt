@@ -7,6 +7,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.location.Location
 import android.location.LocationManager
@@ -26,8 +27,10 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.gson.JsonObject
-import com.gun0912.tedpermission.TedPermission
 import com.gun0912.tedpermission.PermissionListener
+import com.gun0912.tedpermission.TedPermission
+import io.realm.Realm
+import io.realm.RealmConfiguration
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONObject
 import retrofit2.Call
@@ -59,6 +62,21 @@ class MainActivity : AppCompatActivity() {
             .setDeniedMessage("설정] > [권한] 에서 권한을 허용할 수 있습니다.")
             .setPermissions(Manifest.permission.ACCESS_FINE_LOCATION)
             .check()
+        Realm.init(this)
+
+       /* private RealmConfiguration getRealmConfig() {
+            if (realmConfiguration == null) {
+                realmConfiguration = new RealmConfiguration
+                        .Builder()
+                    .schemaVersion(0)
+                    .migration(migration)
+                    .deleteRealmIfMigrationNeeded()
+                    .build();
+            }
+            return realmConfiguration;
+        }*/
+
+
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -92,6 +110,10 @@ class MainActivity : AppCompatActivity() {
         val btn_Weather = findViewById<Button>(R.id.btn_loadWeather) as Button
         btn_Weather.setOnClickListener {
             getCurrentWeather()
+        }
+        val btn_Realm : Button = findViewById<Button>(R.id.btn_MoveToRealm) as Button
+        btn_MoveToRealm.setOnClickListener {
+            loadEditActivity()
         }
     }
 
@@ -131,7 +153,12 @@ class MainActivity : AppCompatActivity() {
         })
         return null;
     }
-
+    fun loadEditActivity()
+    {
+        Log.d(ContentValues.TAG,"LOAD EDIT")
+        val intent : Intent = Intent(this, EditActivity::class.java)
+        startActivity(intent)
+    }
     fun showNoti(title: String, body: String) {
         var not = getNotificationBuilder("channel1", "1st Channel")
         not.setTicker("Ticker")
