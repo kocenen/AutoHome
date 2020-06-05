@@ -81,6 +81,18 @@
         android:text="날씨가 궁금하신가요?"
         app:layout_constraintBottom_toTopOf="@+id/tb_sendval"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.718" />
+
+    <TextView
+        android:id="@+id/txt_weatherview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="버튼을 누르면 날씨가 표시되어요!"
+        app:layout_constraintBottom_toTopOf="@+id/tb_sendval"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_loadWeather" />
 </androidx.constraintlayout.widget.ConstraintLayout>
